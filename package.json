@@ -1,0 +1,19 @@
+{
+  "name": "dw_training_dic",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test:open": "npx cypress open",
+    "test:backend" : "newman run api_testing/Todoist.postman_collection.json -e api_testing/Todoistenv.postman_environment.json"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^13.6.0"
+  },
+  "dependencies": {
+    "newman": "^6.0.0"
+  }
+}

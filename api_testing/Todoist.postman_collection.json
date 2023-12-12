@@ -1,0 +1,212 @@
+{
+	"info": {
+		"_postman_id": "d8700436-5d4b-4660-b41d-faaff1c2f8a0",
+		"name": "Todoist",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31739123"
+	},
+	"item": [
+		{
+			"name": "Create project",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "a03e88d8e725ff79196b3cf38deb732edd98be5b",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"DW Training 2\"\n}"
+				},
+				"url": {
+					"raw": "https://api.todoist.com/rest/v2/projects",
+					"protocol": "https",
+					"host": [
+						"api",
+						"todoist",
+						"com"
+					],
+					"path": [
+						"rest",
+						"v2",
+						"projects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Read project",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"response should be okay to process\", function () {",
+							"    pm.response.to.not.be.error;",
+							"    pm.response.to.have.jsonBody(\"id\");",
+							"    pm.response.to.not.have.jsonBody(\"error\");",
+							"});",
+							"",
+							"pm.test(\"response must be valid and have a body\", function () {",
+							"     pm.response.to.be.ok;",
+							"     pm.response.to.be.withBody;",
+							"     pm.response.to.be.json;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "a03e88d8e725ff79196b3cf38deb732edd98be5b",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://api.todoist.com/rest/v2/projects/{{projectId}}",
+					"protocol": "https",
+					"host": [
+						"api",
+						"todoist",
+						"com"
+					],
+					"path": [
+						"rest",
+						"v2",
+						"projects",
+						"{{projectId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update project",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "a03e88d8e725ff79196b3cf38deb732edd98be5b",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Hola a todos actualizado\"\n}"
+				},
+				"url": {
+					"raw": "https://api.todoist.com/rest/v2/projects/{{projectId}}",
+					"protocol": "https",
+					"host": [
+						"api",
+						"todoist",
+						"com"
+					],
+					"path": [
+						"rest",
+						"v2",
+						"projects",
+						"{{projectId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update project Copy",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "a03e88d8e725ff79196b3cf38deb732edd98be5b",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://api.todoist.com/rest/v2/projects/{{projectId}}",
+					"protocol": "https",
+					"host": [
+						"api",
+						"todoist",
+						"com"
+					],
+					"path": [
+						"rest",
+						"v2",
+						"projects",
+						"{{projectId}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
